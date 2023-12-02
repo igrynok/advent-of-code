@@ -9,10 +9,12 @@ template = 'Game (.*): (.*)'
 colors = {'red': 12, 'green': 13, 'blue': 14}
 
 for line in data.strip().split("\n"):
+
     line_match = re.match(template, line)
     game_num = int(line_match.group(1))
     cube_sets = line_match.group(2).split(';')
     game_possible = True
+
     for cube_set in cube_sets:
         cubes = cube_set.split(',')
         for cube in cubes:
@@ -24,6 +26,7 @@ for line in data.strip().split("\n"):
                 break
         if not game_possible:
             break
+
     if game_possible:
         answer.append(game_num)
 

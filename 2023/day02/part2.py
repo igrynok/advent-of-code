@@ -7,14 +7,16 @@ data = open(input_file).read()
 
 answer = []
 template = 'Game (.*): (.*)'
-colors = {'red':12, 'green':13, 'blue':14}
+colors = {'red': 12, 'green': 13, 'blue': 14}
 
 for line in data.strip().split("\n"):
-    m = re.match(template, line)
-    game_num = int(m.group(1))
-    cube_sets = m.group(2).split(';')
+
+    line_match = re.match(template, line)
+    game_num = int(line_match.group(1))
+    cube_sets = line_match.group(2).split(';')
     game_possible = True
     colors_min = defaultdict(int)
+
     for cube_set in cube_sets:
         cubes = cube_set.split(',')
         for cube in cubes:
@@ -23,6 +25,7 @@ for line in data.strip().split("\n"):
             color = match.group(2).lower()
             if colors_min[color] < number:
                 colors_min[color] = number
+
     set_power = 1
     for key in colors_min.keys():
         set_power *= colors_min[key]
