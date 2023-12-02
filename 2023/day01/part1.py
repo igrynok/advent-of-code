@@ -3,16 +3,16 @@ input_file = "input"
 data = open(input_file).read()
 
 answer = []
-for lines in data.strip().split("\n"):
+for codes in data.strip().split("\n"):
 
     num = ''
 
-    for ch in lines:
+    for ch in codes:
         if ch.isdigit():
             num += ch
             break
 
-    for ch in lines[::-1]:
+    for ch in codes[::-1]:
         if ch.isdigit():
             num += ch
             break
