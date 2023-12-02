@@ -7,11 +7,11 @@ data = open(input_file).read()
 
 answer = []
 template = 'Game (.*): (.*)'
-colors = {'red': 12, 'green': 13, 'blue': 14}
+color_limits = {'red': 12, 'green': 13, 'blue': 14}
 
-for line in data.strip().split("\n"):
+for game in data.strip().split("\n"):
 
-    line_match = re.match(template, line)
+    line_match = re.match(template, game)
     game_num = int(line_match.group(1))
     cube_sets = line_match.group(2).split(';')
     game_possible = True
